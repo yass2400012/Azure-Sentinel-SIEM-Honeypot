@@ -144,7 +144,6 @@ Ensure that the rule is set to create an incident whenever it detects a suspicio
 
 # Final Result
 
-
 • Simulated brute-force login attacks
 <br>
 • Logs collected via Log Analytics Workspace (LAW)
