@@ -3,7 +3,9 @@ This project simulates a real-world Security Operations Center (SOC) environment
 <br>
 
 Key objectives include threat detection, log analysis, IP enrichment, automated response, and security event correlation using Microsoft’s cloud-native security tools.
+<br>
 
+![Windows VM Attack Map](project-screenshots/Windows%20VM%20Attack%20Map.PNG)
 
 # Lab Checklist
 
