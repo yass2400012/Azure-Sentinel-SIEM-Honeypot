@@ -3,31 +3,7 @@ Simulate a real-world Security Operations Center (SOC) scenario by deploying a W
 
 <br>
 
-| Tools & Technologies          | Description                                        |
-| ----------------------------- | -------------------------------------------------- |
-| Microsoft Azure               | Virtual Machines, Resource Groups, Subscriptions   |
-| Microsoft Sentinel (SIEM)     | Cloud-native SIEM for security analytics           |
-| Azure Firewall & NSG          | Traffic filtering and network segmentation         |
-| Log Analytics Workspace (LAW) | Centralized log collection and querying            |
-| Azure Monitor & DCR           | Telemetry collection and rule-based log forwarding |
-| Watchlists                    | IP threat intelligence and enrichment              |
-| KQL                           | Used for querying and analyzing logs               |
 
-
-<br>
-<br>
-
-
-| Security Skill               | Description                                   |
-| ---------------------------- | --------------------------------------------- |
-| Security Event Monitoring    | Tracking security logs using Sentinel         |
-| Brute-force Detection        | Simulated attacks using failed logins         |
-| Threat Detection & Response  | Alerts triggered from suspicious activity     |
-| Log Correlation              | Linking multiple events to detect patterns    |
-| IP Geolocation & Enrichment  | Enhancing logs with watchlist data            |
-| Firewall & NSG Configuration | Allowing/denying traffic to simulate exposure |
-        
-<br>
 
 # Lab Checklist
 
@@ -38,6 +14,7 @@ In Azure Portal, search for Virtual Machines.
 Create a new Windows 10 VM (choose an appropriate size based on your available credits).
 Configure Network Security Group (NSG) to allow all inbound traffic to simulate a vulnerable VM.
 Disable the Windows Firewall: 
+<br>
 Start -> wf.msc -> Properties -> All Off.
 
 Log into the VM:
@@ -73,11 +50,16 @@ SecurityEvent
 | where EventID == 4625
 ```
 
+![Query for failed logins](project-screenshots/Query%20for%20failed%20logins.PNG)
+
+
 # Part 4: Log Enrichment with GeoIP Data
 Import GeoIP Watchlist:
 
 Download the GeoIP watchlist: geoip-summarized.csv.
 In Sentinel, create a Watchlist and import the CSV file with approximately 54,000 rows of IP address information.
+
+![Microsoft Sentinel Watchlist Creation](project-screenshots/Microsoft%20Sentinel%20Watchlist%20Creation.PNG)
 
 Enrich Logs with GeoIP Data:
 
@@ -93,49 +75,68 @@ SecurityEvent
 
 Observe the Enriched Logs:
 
+![Query adding map location](project-screenshots/Query%20adding%20map%20location.PNG)
+
 View the geographical data of failed login attempts, identifying where attacks are originating.
 
 # Part 5: Attack Map Creation
 Create a Sentinel Workbook:
-
 Create a new Workbook in Sentinel.
-
 Delete the prepopulated elements and add a Query element.
 
 Insert JSON for Attack Map:
-
 Go to the Advanced Editor tab in the Workbook and paste the map.json for visualizing failed login attempts on a map.
 
 Observe the Interactive Map:
-
 Visualize failed login attempts with enriched GeoIP data to see where attacks are coming from.
+
+![Windows VM Attack Map](project-screenshots/Windows%20VM%20Attack%20Map.PNG)
 
 # Part 6: Incident Rule Configuration
 Enable Built-in Analytics Rule for Incident Detection:
-
 Go to Microsoft Sentinel → Analytics.
-
 Search for the "Multiple Failed Authentication Attempts" rule and enable it.
 
 Customize Incident Detection:
-
 Modify the rule to detect multiple failed login attempts from the same IP address within a defined time window.
 
 Create Incident Alerts:
-
 Ensure that the rule is set to create an incident whenever it detects a suspicious activity such as multiple failed logins.
+
+![Microsoft Sentinel Incidents](project-screenshots/Microsoft%20Sentinel%20Incidents.PNG)
 
 
 # Final Result:
 
 
 # Skills Demonstrated
-Skill Area	Description:
-SIEM Integration	Configured Microsoft Sentinel with centralized log ingestion
-Incident Detection	Automated brute-force detection rule with incident creation
-Log Analysis (KQL)	Queried and filtered Windows Security logs
-Threat Enrichment	Correlated attacker IPs with geolocation data using watchlists
-Security Monitoring	Built real-time dashboards using Sentinel Workbooks
-Visualization: Creating Workbooks for graphical representation of attacks.
-Incident Detection: Configuring incident rules to monitor for suspicious activity.
+
+<br>
+
+| Tools & Technologies          | Description                                        |
+| ----------------------------- | -------------------------------------------------- |
+| Microsoft Azure               | Virtual Machines, Resource Groups, Subscriptions   |
+| Microsoft Sentinel (SIEM)     | Cloud-native SIEM for security analytics           |
+| Azure Firewall & NSG          | Traffic filtering and network segmentation         |
+| Log Analytics Workspace (LAW) | Centralized log collection and querying            |
+| Azure Monitor & DCR           | Telemetry collection and rule-based log forwarding |
+| Watchlists                    | IP threat intelligence and enrichment              |
+| KQL                           | Used for querying and analyzing logs               |
+| Visualization                 | Workbooks for graphical representation of attacks  |
+
+
+<br>
+<br>
+
+
+| Security Skill               | Description                                   |
+| ---------------------------- | --------------------------------------------- |
+| Security Event Monitoring    | Tracking security logs using Sentinel         |
+| Brute-force Detection        | Simulated attacks using failed logins         |
+| Threat Detection & Response  | Alerts triggered from suspicious activity     |
+| Log Correlation              | Linking multiple events to detect patterns    |
+| IP Geolocation & Enrichment  | Enhancing logs with watchlist data            |
+| Firewall & NSG Configuration | Allowing/denying traffic to simulate exposure |
+        
+<br>
 
