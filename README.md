@@ -1,8 +1,8 @@
-# Azure-Sentinel-SIEM-Honeypot
-Simulate a real-world Security Operations Center (SOC) scenario by deploying a Windows honeypot, collecting and analyzing threat logs with Microsoft Sentinel, enriching data using a watchlist, visualizing attack sources, and generating automated incidents based on suspicious activity.
-
+# Azure-Sentinel-SIEM-Honeypot Project
+This project simulates a real-world Security Operations Center (SOC) environment. A vulnerable Windows virtual machine (honeypot) is deployed in Azure to attract brute-force login attempts. Security logs are forwarded to Microsoft Sentinel (SIEM), where logs are enriched with geolocation data, visualized on an attack map, and used to trigger automated incident creation.
 <br>
 
+Key objectives include threat detection, log analysis, IP enrichment, automated response, and security event correlation using Microsoft’s cloud-native security tools.
 
 
 # Lab Checklist
@@ -27,6 +27,8 @@ Fail 3 login attempts using an invalid username (e.g., employee).
 Inspect Logs:
 Log into the VM and open Event Viewer.
 Navigate to Security Logs and check for Event ID 4625 (failed logon events).
+
+![Logging into the VM and Inspecting Logs](project-screenshots/Logging%20into%20the%20VM%20and%20Inspecting%20Logs.PNG)
 
 Create a Central Log Repository (Log Analytics Workspace):
 We'll later forward logs to Microsoft Sentinel via the Log Analytics Workspace (LAW).
@@ -106,9 +108,6 @@ Ensure that the rule is set to create an incident whenever it detects a suspicio
 ![Microsoft Sentinel Incidents](project-screenshots/Microsoft%20Sentinel%20Incidents.PNG)
 
 
-# Final Result:
-
-
 # Skills Demonstrated
 
 <br>
@@ -139,4 +138,20 @@ Ensure that the rule is set to create an incident whenever it detects a suspicio
 | Firewall & NSG Configuration | Allowing/denying traffic to simulate exposure |
         
 <br>
+
+
+# Final Result
+
+
+• Simulated brute-force login attacks
+<br>
+• Logs collected via Log Analytics Workspace (LAW)
+<br>
+• Analyzed events using KQL queries
+<br>
+• IP addresses enriched via Azure Watchlists
+<br>
+• Attack map built in Sentinel Workbooks
+<br>
+• Created automated incidents for suspicious activity
 
